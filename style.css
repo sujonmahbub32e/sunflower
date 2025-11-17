@@ -1,0 +1,54 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #000000;
+  overflow: hidden;
+}
+
+.heart {
+  position: relative;
+  width: 300px;
+  height: 300px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  animation: rotate 10s linear infinite;
+}
+
+.heart span {
+  position: absolute;
+  color: #ea80b0;
+  font-size: 1.2rem;
+  font-family: monospace;
+  animation: move 2s ease-in-out infinite;
+  animation-delay: calc(var(--i) * 0.6s);
+  transform-origin: bottom center;
+}
+
+@keyframes rotate {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+@keyframes move {
+  0%, 100% {
+    transform: translateY(calc(sin(var(--i) * 38deg) * 50px))
+               translateX(calc(cos(var(--i) * 30deg) * 50px))
+               scale(1);
+    opacity: 1;
+  }
+  50% {
+    transform: translateY(calc(sin(var(--i) * 40deg) * 80px))
+               translateX(calc(cos(var(--i) * 36deg) * 80px))
+               scale(1.2);
+    opacity: 0.7;
+  }
+}
